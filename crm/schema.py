@@ -205,6 +205,12 @@ class OrderType(DjangoObjectType):
     # Expose order_date as orderDate (camelCase)
     orderDate = graphene.DateTime(source="order_date")
 
+    # Add singular product for compatibility
+    product = graphene.Field(ProductType)
+
+    def resolve_product(self, info):
+        return self.products.first()
+
     class Meta:
         model = Order
         fields = "__all__"
