@@ -1,7 +1,6 @@
 import django_filters
 from .models import Customer, Product, Order
 
-
 class CustomerFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(field_name="name", lookup_expr="icontains")
     email = django_filters.CharFilter(field_name="email", lookup_expr="icontains")
@@ -23,16 +22,10 @@ class ProductFilter(django_filters.FilterSet):
     price__lte = django_filters.NumberFilter(field_name="price", lookup_expr="lte")
     stock__gte = django_filters.NumberFilter(field_name="stock", lookup_expr="gte")
     stock__lte = django_filters.NumberFilter(field_name="stock", lookup_expr="lte")
-    low_stock = django_filters.BooleanFilter(method="filter_low_stock")
-
-    def filter_low_stock(self, queryset, name, value):
-        if value:
-            return queryset.filter(stock__lt=10)
-        return queryset
 
     class Meta:
         model = Product
-        fields = ["name", "price__gte", "price__lte", "stock__gte", "stock__lte", "low_stock"]
+        fields = ["name", "price__gte", "price__lte", "stock__gte", "stock__lte"]
 
 
 class OrderFilter(django_filters.FilterSet):
@@ -47,7 +40,11 @@ class OrderFilter(django_filters.FilterSet):
     class Meta:
         model = Order
         fields = [
-            "total_amount__gte", "total_amount__lte",
-            "order_date__gte", "order_date__lte",
-            "customer_name", "product_name", "product_id"
+            "total_amount__gte",
+            "total_amount__lte",
+            "order_date__gte",
+            "order_date__lte",
+            "customer_name",
+            "product_name",
+            "product_id",
         ]
