@@ -4,7 +4,7 @@ import django
 from decimal import Decimal
 from django.utils import timezone
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'graphql_crm.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'alx-backend-graphql_crm.settings')
 django.setup()
 
 from crm.models import Customer, Product, Order
