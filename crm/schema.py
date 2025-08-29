@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.utils import timezone
 from graphql import GraphQLError
 
+# from crm.models import Product
 
 from .models import Customer, Product, Order
 
