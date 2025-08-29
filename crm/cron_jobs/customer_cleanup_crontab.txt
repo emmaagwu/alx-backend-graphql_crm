@@ -1,0 +1,1 @@
+0 2 * * 0 /home/emmanuel/ALX_PRODEV/BE/alx-backend-graphql_crm/crm/cron_jobs/customer_cleanup_crontab.txt
